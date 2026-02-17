@@ -26,5 +26,5 @@ jobs:
       - name: deploy
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
-          GUID_ID: ${{ secrets.GUID_ID }}
+          GUID_ID: ${{ secrets.GUILD_ID }}
         run: python bot.py
