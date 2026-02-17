@@ -1,4 +1,4 @@
-import os, discord
+import os
 
 BOT_TOKEN = os.environ["DISCORD_TOKEN"]
-GUILD = discord.Object(id=1097283105192149034)
+GUILD_ID = id=1097283105192149034

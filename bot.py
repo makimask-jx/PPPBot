@@ -7,19 +7,20 @@ for m in glob.glob("commands/*.py"):
 	module = __import__(m[:-3].replace("/","."), globals(), locals(), [], 0)
 	modules.append(getattr(module, m[9:-3]))
 
+guild=discord.Object(id=env.GUILD_ID)
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix="&", intents=intents)
 
 @client.event
 async def on_ready():
-	client.tree.clear_commands(guild=env.GUILD)
+	client.tree.clear_commands(guild=guild)
 	await client.tree.sync()
 
 	for module in modules:
 		load_module(module)
 
-	client.tree.copy_global_to(guild=env.GUILD)
-	await client.tree.sync(guild=env.GUILD)
+	client.tree.copy_global_to(guild=guild)
+	await client.tree.sync(guild=guild)
 
 def load_module(module):
 	if not hasattr(module, "module"):
